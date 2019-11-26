@@ -9,16 +9,16 @@
 import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var likeImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
