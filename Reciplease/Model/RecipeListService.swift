@@ -13,12 +13,17 @@ class RecipeListService {
     private static let recipeBaseURL = "https://api.edamam.com/search"
     
     private func createRecipeURL(ingredients: [String]) -> URL? {
+        let appId = APIKeysService.recipeAPIId
+        let appKey = APIKeysService.recipeAPIKey
+        
         var ingredientsList = ""
         for i in 0..<ingredients.count {
             ingredientsList += ingredients[i] + " "
         }
         var recipeURL = URLComponents(string: RecipeListService.recipeBaseURL)
-        recipeURL?.queryItems = [URLQueryItem(name: "q", value: ingredientsList), URLQueryItem(name: "app_id", value: ""), URLQueryItem(name: "app_key", value: "")]
+        recipeURL?.queryItems = [URLQueryItem(name: "q", value: ingredientsList),
+                                 URLQueryItem(name: "app_id", value: APIKeysService.valueForAPIKey(named: appId)),
+                                 URLQueryItem(name: "app_key", value: APIKeysService.valueForAPIKey(named: appKey))]
         
         guard let url = recipeURL?.url else { return nil }
         return url
