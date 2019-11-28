@@ -16,9 +16,24 @@ class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeImageView: UIImageView!
+    @IBOutlet weak var darkBackground: UIView!
+    @IBOutlet weak var likeAndTimeView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        darkBackground.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        likeAndTimeView.layer.cornerRadius = 5.0
+    }
+    
+    func configure(name: String, ingredients: String ,image: Data, like: Int, time: Int ) {
+        recipeNameLabel.text = name
+        ingredientsLabel.text = ingredients
+        recipeImageView.image = UIImage(data: image)
+        likeLabel.text = String(like)
+        if time == 0 {
+            timeLabel.text = "/"
+        } else {
+            timeLabel.text = String(time) + "m"
+        }
     }
 }

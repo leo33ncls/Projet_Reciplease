@@ -15,6 +15,9 @@
 		289C05A4238C9802005458B0 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05A3238C9802005458B0 /* IngredientTableViewCell.swift */; };
 		289C05A8238CA233005458B0 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05A7238CA233005458B0 /* RecipesViewController.swift */; };
 		289C05AA238CA3C4005458B0 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05A9238CA3C4005458B0 /* RecipeTableViewCell.swift */; };
+		289C05AC238DC02A005458B0 /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05AB238DC02A005458B0 /* RecipeList.swift */; };
+		289C05AE238DC064005458B0 /* RecipeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05AD238DC064005458B0 /* RecipeListService.swift */; };
+		289C05B223905B24005458B0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 289C05B123905B24005458B0 /* Keys.plist */; };
 		82720334A06A58A64CCA3409 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C5449F13B585E71B574453 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		289C05A3238C9802005458B0 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
 		289C05A7238CA233005458B0 /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		289C05A9238CA3C4005458B0 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		289C05AB238DC02A005458B0 /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
+		289C05AD238DC064005458B0 /* RecipeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListService.swift; sourceTree = "<group>"; };
+		289C05B123905B24005458B0 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		81C5449F13B585E71B574453 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD2728572A1548D9D9D925 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		CB4F5B520F74C8A07738F8DF /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 				2896CFCC23846731000D7101 /* AppDelegate.swift */,
 				2896CFD323846733000D7101 /* Assets.xcassets */,
 				2896CFD823846733000D7101 /* Info.plist */,
+				289C05B123905B24005458B0 /* Keys.plist */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 		2896CFDE2384674E000D7101 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				289C05AB238DC02A005458B0 /* RecipeList.swift */,
+				289C05AD238DC064005458B0 /* RecipeListService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289C05B223905B24005458B0 /* Keys.plist in Resources */,
 				2896CFD723846733000D7101 /* LaunchScreen.storyboard in Resources */,
 				2896CFD423846733000D7101 /* Assets.xcassets in Resources */,
 				2896CFD223846731000D7101 /* Main.storyboard in Resources */,
@@ -237,9 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				289C05A8238CA233005458B0 /* RecipesViewController.swift in Sources */,
+				289C05AC238DC02A005458B0 /* RecipeList.swift in Sources */,
 				289C05AA238CA3C4005458B0 /* RecipeTableViewCell.swift in Sources */,
 				2896CFCD23846731000D7101 /* AppDelegate.swift in Sources */,
 				2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */,
+				289C05AE238DC064005458B0 /* RecipeListService.swift in Sources */,
 				289C05A4238C9802005458B0 /* IngredientTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

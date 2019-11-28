@@ -14,10 +14,18 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var ingredients = [String]()
+    let identifierSegue = "ingredientToRecipes"
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == identifierSegue, let recipesVC = segue.destination as? RecipesViewController {
+            recipesVC.ingredients = ingredients
+        }
+    }
+    
     @IBAction func addIngredients(_ sender: UIButton) {
         
         guard let ingredient = ingredientsTextField.text else {
@@ -30,6 +38,11 @@ class IngredientsViewController: UIViewController {
     @IBAction func clearList(_ sender: UIButton) {
         ingredients.removeAll()
         tableView.reloadData()
+    }
+    
+    @IBAction func searchRecipes(_ sender: UIButton) {
+        guard ingredients.count >= 1 else { return }
+        performSegue(withIdentifier: identifierSegue, sender: nil)
     }
 }
 

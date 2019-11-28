@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Keys.plist
-   Reciplease
-
-   Created by Léo NICOLAS on 28/11/2019.
-   Copyright (c) 2019 Léo NICOLAS. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<dict>
+	<key>recipeAPIId</key>
+	<string></string>
+	<key>recipeAPIKey</key>
+	<string></string>
+</dict>
 </plist>
