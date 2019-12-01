@@ -27,34 +27,66 @@ class RecipesViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipesToRecipeDetails", let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
+            recipeDetailsVC.recipe = sender as? Hit
+        }
+    }
 }
 
-extension RecipesViewController: UITableViewDataSource {
+extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let recipe = recipeList else {
-            return 0
-        }
+        guard let recipe = recipeList else { return 0 }
         return recipe.hits.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let recipes = recipeList else {
+        guard let recipes = recipeList else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell",
+                                                       for: indexPath) as? RecipeTableViewCell else {
             return UITableViewCell()
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as? RecipeTableViewCell else {
-            return UITableViewCell()
-        }
+        
         let recipe = recipes.hits[indexPath.row]
-        /*cell.configure(name: recipe.recipe.label,
-                       ingredients: recipe.recipe.ingredientLines[0],
-                       image: ,
-                       like: 0,
-                       time: recipe.recipe.totalTime)*/
+        RecipeListService().getRecipeImage(image: recipe.recipe.image) { (data) in
+            if let imageData = data {
+                cell.configure(name: recipe.recipe.label,
+                               ingredients: self.getIngredients(ingredients: recipe.recipe.ingredientLines),
+                               image: imageData,
+                               like: recipe.recipe.yield,
+                               time: recipe.recipe.totalTime)
+            }
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let recipes = recipeList else { return }
+        let recipe = recipes.hits[indexPath.row]
+        performSegue(withIdentifier: "recipesToRecipeDetails", sender: recipe)
+    }
+    
+    /*private func getImageForRecipe(image: String) -> UIImage {
+        var recipeImage = #imageLiteral(resourceName: "recipeDefault")
+        RecipeListService().getRecipeImage(image: image) { (data) in
+            if let data = data, let imageData = UIImage(data: data) {
+                recipeImage = imageData
+            }
+        }
+        return recipeImage
+    }*/
+    
+    private func getIngredients(ingredients: [String]) -> String {
+        var ingredientsString = ""
+        for i in 0..<ingredients.count {
+            ingredientsString += ingredients[i]
+        }
+        return ingredientsString
     }
 }

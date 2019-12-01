@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - RecipeList
-struct RecipeList: Codable {
+struct RecipeList: Decodable {
     let q: String
     let from, to: Int
     let more: Bool
@@ -18,19 +18,20 @@ struct RecipeList: Codable {
 }
 
 // MARK: - Hit
-struct Hit: Codable {
+struct Hit: Decodable {
     let recipe: Recipe
     let bookmarked, bought: Bool
 }
 
 // MARK: - Recipe
-struct Recipe: Codable {
+struct Recipe: Decodable {
     let uri: String
     let label: String
     let image: String
     let source: String
     let url: String
     let shareAs: String
+    let yield: Int
     let ingredientLines: [String]
     let ingredients: [Ingredient]
     let calories, totalWeight: Double
@@ -38,7 +39,7 @@ struct Recipe: Codable {
 }
 
 // MARK: - Ingredient
-struct Ingredient: Codable {
+struct Ingredient: Decodable {
     let text: String
     let weight: Double
 }
