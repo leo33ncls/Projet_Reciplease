@@ -28,17 +28,21 @@
             </objects>
             <point key="canvasLocation" x="-1612" y="251"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="wSz-XN-WmB">
             <objects>
-                <navigationController id="20d-fX-M4Z" sceneMemberID="viewController">
+                <navigationController title="Navigation Controller" id="20d-fX-M4Z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="uUe-NE-Pax"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cs7-zm-K5X">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.18431372549019609" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -50,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="-748" y="252"/>
         </scene>
-        <!--Reciplease-->
+        <!--Ingredients-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="IngredientsViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ingredients" id="BYZ-38-t0r" customClass="IngredientsViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +168,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Reciplease" id="qpC-Fy-6Dk"/>
+                    <navigationItem key="navigationItem" title="Reciplease" id="qpC-Fy-6Dk">
+                        <barButtonItem key="backBarButtonItem" title="back" id="ndn-uW-n7J">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ingredientsTextField" destination="BDW-t6-dnd" id="K6P-BE-r1W"/>
                         <outlet property="tableView" destination="7dy-X3-1eN" id="BWk-zj-ljE"/>
@@ -175,7 +183,7 @@
             </objects>
             <point key="canvasLocation" x="168.80000000000001" y="250.52473763118442"/>
         </scene>
-        <!--Recipes View Controller-->
+        <!--Reciplease-->
         <scene sceneID="qel-ck-gDU">
             <objects>
                 <viewController id="6iZ-Yu-Haz" customClass="RecipesViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -271,6 +279,11 @@
                         <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O6T-Ys-Vxc"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Reciplease" id="jls-PV-5G4">
+                        <barButtonItem key="backBarButtonItem" title="back" id="D6O-Wz-Cs7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vmV-DK-25C" id="SFR-Pt-4NY"/>
                         <segue destination="669-cx-6Zv" kind="show" identifier="recipesToRecipeDetails" id="Uja-y9-nNG"/>
@@ -280,7 +293,7 @@
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="250.52473763118442"/>
         </scene>
-        <!--Recipe Details View Controller-->
+        <!--Reciplease-->
         <scene sceneID="xsT-E4-Bvn">
             <objects>
                 <viewController id="669-cx-6Zv" customClass="RecipeDetailsViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
@@ -292,14 +305,6 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="219"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-P7-glg">
-                                <rect key="frame" x="41" y="559" width="293" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.074509803920000006" green="0.49803921569999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Get directions"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="c51-4o-yko">
                                 <rect key="frame" x="16" y="248" width="343" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -345,10 +350,33 @@
                                     <outlet property="dataSource" destination="669-cx-6Zv" id="ep9-8Q-yzw"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqu-P7-glg">
+                                <rect key="frame" x="41" y="552" width="293" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.49803921569999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Get directions"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="0cE-0S-ahu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Reciplease" id="Vqt-yV-Kld">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wQC-58-dIX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="48r-TV-Hjd">
+                                <rect key="frame" x="276" y="7" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="setRecipeAsFavorite:" destination="669-cx-6Zv" id="Igv-d4-RlE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="recipeImageView" destination="cKr-g3-adC" id="rbJ-W2-X2y"/>
                         <outlet property="recipeNameLabel" destination="c51-4o-yko" id="0FK-dR-8cV"/>

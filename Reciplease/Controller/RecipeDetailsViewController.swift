@@ -33,6 +33,10 @@ class RecipeDetailsViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func setRecipeAsFavorite(_ sender: UIBarButtonItem) {
+        //saveRecipe(recipe: recipe)
+    }
+    
     private func saveRecipe(recipe: Hit) {
         let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
         favoriteRecipe.name = recipe.recipe.label
@@ -51,6 +55,7 @@ class RecipeDetailsViewController: UIViewController {
         return ingredientsString
     }
 }
+
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

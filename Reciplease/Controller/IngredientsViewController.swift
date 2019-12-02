@@ -46,6 +46,7 @@ class IngredientsViewController: UIViewController {
     }
 }
 
+
 extension IngredientsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

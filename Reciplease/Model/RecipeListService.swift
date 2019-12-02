@@ -10,8 +10,10 @@ import Foundation
 import Alamofire
 
 class RecipeListService {
+    // The base URL of the recipe API
     private static let recipeBaseURL = "https://api.edamam.com/search"
     
+    // Function which creates an Url with parameters
     private func createRecipeURL(ingredients: [String]) -> URL? {
         let appId = APIKeysService.recipeAPIId
         let appKey = APIKeysService.recipeAPIKey
@@ -29,6 +31,7 @@ class RecipeListService {
         return url
     }
     
+    // Function which gets an objet RecipeList from a response request
     func getRecipeList(ingredients: [String], callback: @escaping (Bool, RecipeList?) -> Void) {
         guard let url = createRecipeURL(ingredients: ingredients) else { return }
         Alamofire.request(url).responseJSON { (response) in
@@ -46,6 +49,7 @@ class RecipeListService {
         }
     }
     
+    // Function which gets an recipe image from a response request
     func getRecipeImage(image: String, completionHandler: @escaping (Data?) -> Void) {
         guard let imageURL = URL(string: image) else { return }
         Alamofire.request(imageURL).responseJSON { (response) in
