@@ -56,32 +56,14 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
         
         let recipe = recipes.hits[indexPath.row]
         RecipeListService().getRecipeImage(image: recipe.recipe.image) { (data) in
-            if let imageData = data {
-                cell.configure(name: recipe.recipe.label,
-                               ingredients: self.getIngredients(ingredients: recipe.recipe.ingredientLines),
-                               image: imageData,
-                               like: recipe.recipe.yield,
-                               time: recipe.recipe.totalTime)
-            }
+            cell.recipeView.configure(name: recipe.recipe.label,
+                                      ingredients: self.getIngredients(ingredients: recipe.recipe.ingredientLines),
+                                      like: recipe.recipe.yield,
+                                      time: recipe.recipe.totalTime,
+                                      imageData: data)
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let recipes = recipeList else { return }
-        let recipe = recipes.hits[indexPath.row]
-        performSegue(withIdentifier: "recipesToRecipeDetails", sender: recipe)
-    }
-    
-    /*private func getImageForRecipe(image: String) -> UIImage {
-        var recipeImage = #imageLiteral(resourceName: "recipeDefault")
-        RecipeListService().getRecipeImage(image: image) { (data) in
-            if let data = data, let imageData = UIImage(data: data) {
-                recipeImage = imageData
-            }
-        }
-        return recipeImage
-    }*/
     
     private func getIngredients(ingredients: [String]) -> String {
         var ingredientsString = ""
@@ -89,5 +71,11 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
             ingredientsString += ingredients[i]
         }
         return ingredientsString
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let recipes = recipeList else { return }
+        let recipe = recipes.hits[indexPath.row]
+        performSegue(withIdentifier: "recipesToRecipeDetails", sender: recipe)
     }
 }

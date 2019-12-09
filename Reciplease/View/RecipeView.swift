@@ -1,20 +1,20 @@
 //
-//  TimeView.swift
+//  RecipeView.swift
 //  Reciplease
 //
-//  Created by Léo NICOLAS on 30/11/2019.
+//  Created by Léo NICOLAS on 09/12/2019.
 //  Copyright © 2019 Léo NICOLAS. All rights reserved.
 //
 
 import UIKit
 
-class TimeView: UIView {
+class RecipeView: UIView {
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var ratingImageView: UIImageView!
-    @IBOutlet weak var timeImageView: UIImageView!
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeView: TimeView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,7 +27,7 @@ class TimeView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("TimeView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("RecipeView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentView)
         contentView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -35,20 +35,17 @@ class TimeView: UIView {
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        clipsToBounds = true
-        layer.cornerRadius = 5.0
-        layer.borderColor = UIColor.white.cgColor
-        layer.borderWidth = 1.0
+        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowRadius: 60.0))
     }
     
-    func setViewValues(like: Int, time: Int) {
-        ratingImageView.image = #imageLiteral(resourceName: "likeIcon")
-        timeImageView.image = #imageLiteral(resourceName: "timeIcon")
-        ratingLabel.text = " \(like)"
-        if time == 0 {
-            timeLabel.text = " /"
+    func configure(name: String?, ingredients: String?, like: Int, time: Int, imageData: Data?) {
+        nameLabel.text = name
+        ingredientsLabel.text = ingredients
+        timeView.setViewValues(like: like, time: time)
+        if let image = imageData {
+            recipeImageView.image = UIImage(data: image)
         } else {
-            timeLabel.text = String(time) + "m"
+            recipeImageView.image = #imageLiteral(resourceName: "recipeDefault")
         }
     }
 }

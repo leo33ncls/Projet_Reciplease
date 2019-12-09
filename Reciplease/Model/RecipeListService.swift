@@ -50,8 +50,9 @@ class RecipeListService {
     }
     
     // Function which gets an recipe image from a response request
-    func getRecipeImage(image: String, completionHandler: @escaping (Data?) -> Void) {
-        guard let imageURL = URL(string: image) else { return }
+    func getRecipeImage(image: String?, completionHandler: @escaping (Data?) -> Void) {
+        guard let imageString = image else { return }
+        guard let imageURL = URL(string: imageString) else { return }
         Alamofire.request(imageURL).responseJSON { (response) in
             guard let imageData = response.data else {
                 return

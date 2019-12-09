@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeView" customModule="Reciplease" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Ynh-np-wgU"/>
+                <outlet property="ratingImageView" destination="ltx-NX-Ck9" id="OW1-iW-Kn1"/>
+                <outlet property="ratingLabel" destination="vfj-EJ-FLd" id="mJi-K6-E1S"/>
+                <outlet property="timeImageView" destination="kb2-7S-2Tj" id="0RF-tI-Peb"/>
+                <outlet property="timeLabel" destination="FtQ-bn-GVL" id="0xV-ta-TKm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-sE-go1">
+                    <rect key="frame" x="3" y="3" width="57" height="44"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3M3-uC-rcP">
+                            <rect key="frame" x="0.0" y="0.0" width="35" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfj-EJ-FLd">
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FtQ-bn-GVL">
+                                    <rect key="frame" x="0.0" y="23" width="35" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0jI-Qh-DDS">
+                            <rect key="frame" x="37" y="0.0" width="20" height="44"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="likeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-NX-Ck9">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="ltx-NX-Ck9" secondAttribute="height" multiplier="1:1" id="x6q-N1-NRL"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kb2-7S-2Tj">
+                                    <rect key="frame" x="0.0" y="24" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="kb2-7S-2Tj" secondAttribute="height" multiplier="1:1" id="nyL-6b-O4e"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fuB-sE-go1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="3" id="1un-pz-C07"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fuB-sE-go1" secondAttribute="bottom" constant="3" id="2ny-IH-9Sf"/>
+                <constraint firstItem="fuB-sE-go1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="3" id="Fb1-VM-A3d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fuB-sE-go1" secondAttribute="trailing" constant="2" id="uKf-Mq-TfN"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="likeIcon" width="100" height="100"/>
+        <image name="timeIcon" width="100" height="100"/>
+    </resources>
+</document>
