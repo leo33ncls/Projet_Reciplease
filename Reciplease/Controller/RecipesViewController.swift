@@ -13,6 +13,9 @@ class RecipesViewController: UIViewController {
     
     var ingredients = [String]()
     var recipeList: RecipeList?
+    
+    let segueIdentifier = "recipesToRecipeDetails"
+    let cellIdentifier = "RecipeCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +24,13 @@ class RecipesViewController: UIViewController {
                 self.recipeList = recipes
                 self.tableView.reloadData()
             } else {
-                let alertVC = UIAlertController(title: "Attention", message: "Requête Incorrect", preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alertVC, animated: true, completion: nil)
+                UIAlertController().showAlert(title: "Warning!", message: "Invalid Request!")
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "recipesToRecipeDetails", let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
+        if segue.identifier == segueIdentifier, let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
             recipeDetailsVC.recipe = sender as? Hit
         }
     }
@@ -49,7 +50,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let recipes = recipeList else { return UITableViewCell() }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell",
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
                                                        for: indexPath) as? RecipeTableViewCell else {
             return UITableViewCell()
         }
@@ -57,25 +58,17 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
         let recipe = recipes.hits[indexPath.row]
         RecipeListService().getRecipeImage(image: recipe.recipe.image) { (data) in
             cell.recipeView.configure(name: recipe.recipe.label,
-                                      ingredients: self.getIngredients(ingredients: recipe.recipe.ingredientLines),
+                                      ingredients: String.convertArrayToString(array: recipe.recipe.ingredientLines),
                                       like: recipe.recipe.yield,
                                       time: recipe.recipe.totalTime,
                                       imageData: data)
         }
         return cell
     }
-    
-    private func getIngredients(ingredients: [String]) -> String {
-        var ingredientsString = ""
-        for i in 0..<ingredients.count {
-            ingredientsString += ingredients[i]
-        }
-        return ingredientsString
-    }
-    
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let recipes = recipeList else { return }
         let recipe = recipes.hits[indexPath.row]
-        performSegue(withIdentifier: "recipesToRecipeDetails", sender: recipe)
+        performSegue(withIdentifier: segueIdentifier, sender: recipe)
     }
 }

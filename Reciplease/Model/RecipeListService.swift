@@ -33,7 +33,11 @@ class RecipeListService {
     
     // Function which gets an objet RecipeList from a response request
     func getRecipeList(ingredients: [String], callback: @escaping (Bool, RecipeList?) -> Void) {
-        guard let url = createRecipeURL(ingredients: ingredients) else { return }
+        guard let url = createRecipeURL(ingredients: ingredients) else {
+            callback(false, nil)
+            return
+        }
+        
         Alamofire.request(url).responseJSON { (response) in
             guard let data = response.data else {
                 callback(false, nil)

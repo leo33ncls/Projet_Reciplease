@@ -16,6 +16,7 @@
 		286C252D239DC01B00E85384 /* RecipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286C252C239DC01B00E85384 /* RecipeView.xib */; };
 		286C252F239DC0A100E85384 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C252E239DC0A100E85384 /* RecipeView.swift */; };
 		286C2531239DD78500E85384 /* FavoriteRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C2530239DD78500E85384 /* FavoriteRecipeViewController.swift */; };
+		286C2533239ECF1100E85384 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C2532239ECF1100E85384 /* Extension.swift */; };
 		2896CFCD23846731000D7101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896CFCC23846731000D7101 /* AppDelegate.swift */; };
 		2896CFD223846731000D7101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2896CFD023846731000D7101 /* Main.storyboard */; };
 		2896CFD423846733000D7101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2896CFD323846733000D7101 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		286C252C239DC01B00E85384 /* RecipeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeView.xib; sourceTree = "<group>"; };
 		286C252E239DC0A100E85384 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		286C2530239DD78500E85384 /* FavoriteRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeViewController.swift; sourceTree = "<group>"; };
+		286C2532239ECF1100E85384 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2896CFC923846731000D7101 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2896CFCC23846731000D7101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2896CFD123846731000D7101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				286C24EA239464D400E85384 /* FavoriteRecipe.swift */,
 				286C24E523945E9700E85384 /* Reciplease.xcdatamodeld */,
 				289C05B52390699C005458B0 /* APIKeysService.swift */,
+				286C2532239ECF1100E85384 /* Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				289C05AA238CA3C4005458B0 /* RecipeTableViewCell.swift in Sources */,
 				289C05BC239347BC005458B0 /* RecipeDetailsViewController.swift in Sources */,
 				286C24EB239464D400E85384 /* FavoriteRecipe.swift in Sources */,
+				286C2533239ECF1100E85384 /* Extension.swift in Sources */,
 				2896CFCD23846731000D7101 /* AppDelegate.swift in Sources */,
 				2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */,
 				286C2531239DD78500E85384 /* FavoriteRecipeViewController.swift in Sources */,

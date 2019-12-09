@@ -9,9 +9,9 @@
 import UIKit
 
 class CustomShadowLayer: CAGradientLayer {
-    init(view: UIView, shadowRadius: CGFloat) {
+    init(view: UIView, shadowColor: UIColor, shadowRadius: CGFloat) {
         super.init()
-        self.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        self.colors = [shadowColor.cgColor, UIColor.clear.cgColor]
         self.shadowRadius = shadowRadius
         let viewFrame = view.frame
         

@@ -35,7 +35,7 @@ class RecipeView: UIView {
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowRadius: 60.0))
+        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowColor: UIColor.black, shadowRadius: 60.0))
     }
     
     func configure(name: String?, ingredients: String?, like: Int, time: Int, imageData: Data?) {

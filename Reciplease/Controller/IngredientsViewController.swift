@@ -14,21 +14,18 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var ingredients = [String]()
-    let identifierSegue = "ingredientToRecipes"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    let segueIdentifier = "ingredientToRecipes"
+    let cellIdentifier = "IngredientCell"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == identifierSegue, let recipesVC = segue.destination as? RecipesViewController {
+        if segue.identifier == segueIdentifier, let recipesVC = segue.destination as? RecipesViewController {
             recipesVC.ingredients = ingredients
         }
     }
     
     @IBAction func addIngredients(_ sender: UIButton) {
-        
         guard let ingredient = ingredientsTextField.text else {
+            UIAlertController().showAlert(title: "Warning!", message: "Please enter an ingredient!")
             return
         }
         ingredients.append(ingredient)
@@ -41,8 +38,11 @@ class IngredientsViewController: UIViewController {
     }
     
     @IBAction func searchRecipes(_ sender: UIButton) {
-        guard ingredients.count >= 1 else { return }
-        performSegue(withIdentifier: identifierSegue, sender: nil)
+        guard ingredients.count >= 1 else {
+            UIAlertController().showAlert(title: "Warning!", message: "You didn't enter any ingredients!")
+            return
+        }
+        performSegue(withIdentifier: segueIdentifier, sender: nil)
     }
 }
 
@@ -57,7 +57,7 @@ extension IngredientsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as? IngredientTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? IngredientTableViewCell else {
             return UITableViewCell()
         }
         let ingredient = ingredients[indexPath.row]

@@ -13,6 +13,10 @@ class FavoriteRecipeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let segueIdentifier = "favoriteToRecipeDetails"
+    let cellIdentifier = "RecipeCell"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
@@ -24,7 +28,7 @@ class FavoriteRecipeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "favoriteToRecipeDetails", let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
+        if segue.identifier == segueIdentifier, let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
             recipeDetailsVC.favoriteRecipe = sender as? FavoriteRecipe
         }
     }
@@ -40,7 +44,7 @@ extension FavoriteRecipeViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell",
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
                                                        for: indexPath) as? RecipeTableViewCell else {
                                                         return UITableViewCell()
         }
@@ -57,6 +61,6 @@ extension FavoriteRecipeViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = FavoriteRecipe.all[indexPath.row]
-        performSegue(withIdentifier: "favoriteToRecipeDetails", sender: recipe)
+        performSegue(withIdentifier: segueIdentifier, sender: recipe)
     }
 }

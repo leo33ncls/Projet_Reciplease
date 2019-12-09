@@ -19,7 +19,7 @@ class RecipeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowRadius: 50.0))
+        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowColor: UIColor.customGrey, shadowRadius: 50.0))
         
         if let currentRecipe = recipe {
             recipeNameLabel.text = currentRecipe.recipe.label
@@ -38,9 +38,7 @@ class RecipeDetailsViewController: UIViewController {
                 }
             }
         } else {
-            let alertVC = UIAlertController(title: "Désolé", message: "Aucune recette trouvée", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alertVC, animated: true, completion: nil)
+            UIAlertController().showAlert(title: "Sorry", message: "No recipes found!")
         }
         tableView.reloadData()
     }
@@ -54,31 +52,27 @@ class RecipeDetailsViewController: UIViewController {
         let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
         favoriteRecipe.name = recipe.recipe.label
         favoriteRecipe.image = recipe.recipe.image
-        favoriteRecipe.ingredients = getIngredients(ingredients: recipe.recipe.ingredientLines)
+        favoriteRecipe.ingredients = String.convertArrayToString(array: recipe.recipe.ingredientLines)
         favoriteRecipe.like = Double(recipe.recipe.yield)
         favoriteRecipe.time = Double(recipe.recipe.totalTime)
         favoriteRecipe.url = recipe.recipe.url
         try? AppDelegate.viewContext.save()
     }
-    
-    private func getIngredients(ingredients: [String]) -> String {
-        var ingredientsString = ""
-        for i in 0..<ingredients.count {
-            ingredientsString += ingredients[i]
-        }
-        return ingredientsString
-    }
 }
-
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let currentRecipe = recipe else { return 0 }
-        return currentRecipe.recipe.ingredientLines.count
+        if let currentRecipe = recipe {
+            return currentRecipe.recipe.ingredientLines.count
+        } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
+            let ingredientsArray = String.convertIngredientStringToArray(string: ingredients)
+            return ingredientsArray.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //guard let currentRecipe = recipe else { return UITableViewCell() }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as? IngredientTableViewCell else {
             return UITableViewCell()
         }
@@ -86,9 +80,12 @@ extension RecipeDetailsViewController: UITableViewDataSource {
             let ingredient = currentRecipe.recipe.ingredientLines[indexPath.row]
             cell.configure(ingredient: ingredient)
             return cell
+        } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
+            let ingredientsArray = String.convertIngredientStringToArray(string: ingredients)
+            cell.configure(ingredient: ingredientsArray[indexPath.row])
+            return cell
         } else {
             return UITableViewCell()
         }
     }
-    
 }
