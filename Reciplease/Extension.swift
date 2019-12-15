@@ -20,24 +20,9 @@ extension UIColor {
 }
 
 extension UIAlertController {
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, viewController: UIViewController) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-}
-
-extension String {
-    static func convertArrayToString(array: [String]) -> String {
-        var string = ""
-        for i in 0..<array.count {
-            string += "; \(array[i])"
-        }
-        string.removeFirst(2)
-        return string
-    }
-    
-    static func convertIngredientStringToArray(string: String) -> [String] {
-        return string.components(separatedBy: "; ")
+        viewController.present(alertVC, animated: true, completion: nil)
     }
 }

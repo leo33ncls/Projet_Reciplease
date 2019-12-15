@@ -12,7 +12,9 @@ class RecipeDetailsViewController: UIViewController {
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var directionButton: UIButton!
     @IBOutlet weak var timeView: TimeView!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     var recipe: Hit?
     var favoriteRecipe: FavoriteRecipe?
@@ -20,6 +22,7 @@ class RecipeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowColor: UIColor.customGrey, shadowRadius: 50.0))
+        directionButton.layer.cornerRadius = 5.0
         
         if let currentRecipe = recipe {
             recipeNameLabel.text = currentRecipe.recipe.label
@@ -38,24 +41,46 @@ class RecipeDetailsViewController: UIViewController {
                 }
             }
         } else {
-            UIAlertController().showAlert(title: "Sorry", message: "No recipes found!")
+            UIAlertController().showAlert(title: "Sorry!", message: "No recipe found!", viewController: self)
         }
         tableView.reloadData()
     }
     
-    @IBAction func setRecipeAsFavorite(_ sender: UIButton) {
-        guard let currentRecipe = recipe else { return }
-        saveRecipe(recipe: currentRecipe)
+    @IBAction func getDirections(_ sender: UIButton) {
+        if let currentRecipe = recipe, let url = URL(string: currentRecipe.recipe.url) {
+            UIApplication.shared.open(url)
+        } else if let currentRecipe = favoriteRecipe, let urlString = currentRecipe.url,
+            let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        } else {
+            UIAlertController().showAlert(title: "Sorry!", message: "No direction available!", viewController: self)
+        }
+    }
+    
+    @IBAction func setRecipeAsFavorite(_ sender: UIBarButtonItem) {
+        if let currentRecipe = recipe {
+            saveRecipe(recipe: currentRecipe)
+            
+        } else if let currentRecipe = favoriteRecipe {
+            removeRecipe(favoriteRecipe: currentRecipe)
+        } else {
+            UIAlertController().showAlert(title: "Sorry!", message: "No recipe to save!", viewController: self)
+        }
     }
     
     private func saveRecipe(recipe: Hit) {
         let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
         favoriteRecipe.name = recipe.recipe.label
         favoriteRecipe.image = recipe.recipe.image
-        favoriteRecipe.ingredients = String.convertArrayToString(array: recipe.recipe.ingredientLines)
+        favoriteRecipe.ingredients = recipe.recipe.ingredientLines.joined(separator: "; ")
         favoriteRecipe.like = Double(recipe.recipe.yield)
         favoriteRecipe.time = Double(recipe.recipe.totalTime)
         favoriteRecipe.url = recipe.recipe.url
+        try? AppDelegate.viewContext.save()
+    }
+    
+    private func removeRecipe(favoriteRecipe: FavoriteRecipe) {
+        AppDelegate.viewContext.delete(favoriteRecipe)
         try? AppDelegate.viewContext.save()
     }
 }
@@ -65,7 +90,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
         if let currentRecipe = recipe {
             return currentRecipe.recipe.ingredientLines.count
         } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
-            let ingredientsArray = String.convertIngredientStringToArray(string: ingredients)
+            let ingredientsArray = ingredients.components(separatedBy: "; ")
             return ingredientsArray.count
         } else {
             return 0
@@ -81,7 +106,7 @@ extension RecipeDetailsViewController: UITableViewDataSource {
             cell.configure(ingredient: ingredient)
             return cell
         } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
-            let ingredientsArray = String.convertIngredientStringToArray(string: ingredients)
+            let ingredientsArray = ingredients.components(separatedBy: "; ")
             cell.configure(ingredient: ingredientsArray[indexPath.row])
             return cell
         } else {

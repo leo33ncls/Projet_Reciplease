@@ -18,12 +18,9 @@ class RecipeListService {
         let appId = APIKeysService.recipeAPIId
         let appKey = APIKeysService.recipeAPIKey
         
-        var ingredientsList = ""
-        for i in 0..<ingredients.count {
-            ingredientsList += ingredients[i] + " "
-        }
+        let stringIngredient = ingredients.joined(separator: " ")
         var recipeURL = URLComponents(string: RecipeListService.recipeBaseURL)
-        recipeURL?.queryItems = [URLQueryItem(name: "q", value: ingredientsList),
+        recipeURL?.queryItems = [URLQueryItem(name: "q", value: stringIngredient),
                                  URLQueryItem(name: "app_id", value: APIKeysService.valueForAPIKey(named: appId)),
                                  URLQueryItem(name: "app_key", value: APIKeysService.valueForAPIKey(named: appKey))]
         

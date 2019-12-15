@@ -347,9 +347,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="c51-4o-yko">
-                                <rect key="frame" x="16" y="248" width="343" height="26"/>
+                                <rect key="frame" x="16" y="237" width="343" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -398,6 +398,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Get directions"/>
+                                <connections>
+                                    <action selector="getDirections:" destination="669-cx-6Zv" eventType="touchUpInside" id="jOW-Mc-PUV"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6it-r3-leC" customClass="TimeView" customModule="Reciplease" customModuleProvider="target">
                                 <rect key="frame" x="297" y="77" width="62" height="50"/>
@@ -409,23 +412,17 @@
                         <viewLayoutGuide key="safeArea" id="0cE-0S-ahu"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="Vqt-yV-Kld">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="wQC-58-dIX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="48r-TV-Hjd">
-                                <rect key="frame" x="313" y="2" width="46" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="setRecipeAsFavorite:" destination="669-cx-6Zv" eventType="touchUpInside" id="veu-aL-ziA"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" image="whiteStar" id="N4w-y5-7mT">
+                            <connections>
+                                <action selector="setRecipeAsFavorite:" destination="669-cx-6Zv" id="UFj-po-fQb"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="directionButton" destination="Yqu-P7-glg" id="LdF-Ld-X5I"/>
                         <outlet property="recipeImageView" destination="cKr-g3-adC" id="rbJ-W2-X2y"/>
                         <outlet property="recipeNameLabel" destination="c51-4o-yko" id="0FK-dR-8cV"/>
+                        <outlet property="rightBarButtonItem" destination="N4w-y5-7mT" id="Nea-ZX-M4i"/>
                         <outlet property="tableView" destination="MGI-D3-3xi" id="yyU-Xp-Eay"/>
                         <outlet property="timeView" destination="6it-r3-leC" id="ukz-aT-rQV"/>
                     </connections>
@@ -437,6 +434,7 @@
     </scenes>
     <resources>
         <image name="recipeDefault" width="750" height="375"/>
+        <image name="whiteStar" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="agT-aQ-ACf"/>

@@ -24,7 +24,7 @@ class RecipesViewController: UIViewController {
                 self.recipeList = recipes
                 self.tableView.reloadData()
             } else {
-                UIAlertController().showAlert(title: "Warning!", message: "Invalid Request!")
+                UIAlertController().showAlert(title: "Warning!", message: "Invalid Request!", viewController: self)
             }
         }
     }
@@ -58,7 +58,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
         let recipe = recipes.hits[indexPath.row]
         RecipeListService().getRecipeImage(image: recipe.recipe.image) { (data) in
             cell.recipeView.configure(name: recipe.recipe.label,
-                                      ingredients: String.convertArrayToString(array: recipe.recipe.ingredientLines),
+                                      ingredients: recipe.recipe.ingredientLines.joined(separator: "; "),
                                       like: recipe.recipe.yield,
                                       time: recipe.recipe.totalTime,
                                       imageData: data)

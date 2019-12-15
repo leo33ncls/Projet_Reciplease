@@ -25,7 +25,7 @@ class IngredientsViewController: UIViewController {
     
     @IBAction func addIngredients(_ sender: UIButton) {
         guard let ingredient = ingredientsTextField.text else {
-            UIAlertController().showAlert(title: "Warning!", message: "Please enter an ingredient!")
+            UIAlertController().showAlert(title: "Warning!", message: "Please enter an ingredient!", viewController: self)
             return
         }
         ingredients.append(ingredient)
@@ -39,7 +39,7 @@ class IngredientsViewController: UIViewController {
     
     @IBAction func searchRecipes(_ sender: UIButton) {
         guard ingredients.count >= 1 else {
-            UIAlertController().showAlert(title: "Warning!", message: "You didn't enter any ingredients!")
+            UIAlertController().showAlert(title: "Warning!", message: "You didn't enter any ingredients!", viewController: self)
             return
         }
         performSegue(withIdentifier: segueIdentifier, sender: nil)

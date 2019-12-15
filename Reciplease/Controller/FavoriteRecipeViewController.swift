@@ -16,7 +16,6 @@ class FavoriteRecipeViewController: UIViewController {
     let segueIdentifier = "favoriteToRecipeDetails"
     let cellIdentifier = "RecipeCell"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
@@ -24,6 +23,9 @@ class FavoriteRecipeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if FavoriteRecipe.all.count == 0 {
+            UIAlertController().showAlert(title: "No favorite recipe!", message: "To set a recipe in favorite, click on the star at the top right", viewController: self)
+        }
         tableView.reloadData()
     }
     

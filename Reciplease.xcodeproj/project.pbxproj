@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B0AA23847C33003D4539 /* IngredientsViewController.swift */; };
+		286C1317239FF19E00D7576E /* FavoriteRecipeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */; };
 		286C24E423935C1F00E85384 /* CustomShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E323935C1F00E85384 /* CustomShadowLayer.swift */; };
 		286C24E723945E9700E85384 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E523945E9700E85384 /* Reciplease.xcdatamodeld */; };
 		286C24EB239464D400E85384 /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C24EA239464D400E85384 /* FavoriteRecipe.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		2845B0AA23847C33003D4539 /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeTestCase.swift; sourceTree = "<group>"; };
 		286C24E323935C1F00E85384 /* CustomShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowLayer.swift; sourceTree = "<group>"; };
 		286C24E623945E9700E85384 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		286C24EA239464D400E85384 /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				286C251E23959CFA00E85384 /* RecipeListServiceTestCase.swift */,
+				286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */,
 				286C251823959C8100E85384 /* Info.plist */,
 			);
 			path = RecipleaseTests;
@@ -131,6 +134,7 @@
 				2896CFE023846760000D7101 /* View */,
 				2896CFDF23846758000D7101 /* Controller */,
 				2896CFCC23846731000D7101 /* AppDelegate.swift */,
+				286C2532239ECF1100E85384 /* Extension.swift */,
 				2896CFD323846733000D7101 /* Assets.xcassets */,
 				2896CFD823846733000D7101 /* Info.plist */,
 				289C05B123905B24005458B0 /* Keys.plist */,
@@ -146,7 +150,6 @@
 				286C24EA239464D400E85384 /* FavoriteRecipe.swift */,
 				286C24E523945E9700E85384 /* Reciplease.xcdatamodeld */,
 				289C05B52390699C005458B0 /* APIKeysService.swift */,
-				286C2532239ECF1100E85384 /* Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				286C251F23959CFA00E85384 /* RecipeListServiceTestCase.swift in Sources */,
+				286C1317239FF19E00D7576E /* FavoriteRecipeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
