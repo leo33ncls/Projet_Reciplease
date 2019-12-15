@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B0AA23847C33003D4539 /* IngredientsViewController.swift */; };
+		284C387E23A6CCEE00BCA7A0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C387D23A6CCEE00BCA7A0 /* UIColor.swift */; };
+		284C388023A6CD2100BCA7A0 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C387F23A6CD2100BCA7A0 /* UIAlertController.swift */; };
 		286C1317239FF19E00D7576E /* FavoriteRecipeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */; };
 		286C24E423935C1F00E85384 /* CustomShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E323935C1F00E85384 /* CustomShadowLayer.swift */; };
 		286C24E723945E9700E85384 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E523945E9700E85384 /* Reciplease.xcdatamodeld */; };
@@ -17,7 +19,6 @@
 		286C252D239DC01B00E85384 /* RecipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286C252C239DC01B00E85384 /* RecipeView.xib */; };
 		286C252F239DC0A100E85384 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C252E239DC0A100E85384 /* RecipeView.swift */; };
 		286C2531239DD78500E85384 /* FavoriteRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C2530239DD78500E85384 /* FavoriteRecipeViewController.swift */; };
-		286C2533239ECF1100E85384 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C2532239ECF1100E85384 /* Extension.swift */; };
 		2896CFCD23846731000D7101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896CFCC23846731000D7101 /* AppDelegate.swift */; };
 		2896CFD223846731000D7101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2896CFD023846731000D7101 /* Main.storyboard */; };
 		2896CFD423846733000D7101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2896CFD323846733000D7101 /* Assets.xcassets */; };
@@ -46,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		2845B0AA23847C33003D4539 /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		284C387D23A6CCEE00BCA7A0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		284C387F23A6CD2100BCA7A0 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeTestCase.swift; sourceTree = "<group>"; };
 		286C24E323935C1F00E85384 /* CustomShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowLayer.swift; sourceTree = "<group>"; };
 		286C24E623945E9700E85384 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
@@ -57,7 +60,6 @@
 		286C252C239DC01B00E85384 /* RecipeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeView.xib; sourceTree = "<group>"; };
 		286C252E239DC0A100E85384 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		286C2530239DD78500E85384 /* FavoriteRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeViewController.swift; sourceTree = "<group>"; };
-		286C2532239ECF1100E85384 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2896CFC923846731000D7101 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2896CFCC23846731000D7101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2896CFD123846731000D7101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		284C387C23A6CC9F00BCA7A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				284C387D23A6CCEE00BCA7A0 /* UIColor.swift */,
+				284C387F23A6CD2100BCA7A0 /* UIAlertController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		286C251523959C8100E85384 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +144,8 @@
 				2896CFDE2384674E000D7101 /* Model */,
 				2896CFE023846760000D7101 /* View */,
 				2896CFDF23846758000D7101 /* Controller */,
+				284C387C23A6CC9F00BCA7A0 /* Extension */,
 				2896CFCC23846731000D7101 /* AppDelegate.swift */,
-				286C2532239ECF1100E85384 /* Extension.swift */,
 				2896CFD323846733000D7101 /* Assets.xcassets */,
 				2896CFD823846733000D7101 /* Info.plist */,
 				289C05B123905B24005458B0 /* Keys.plist */,
@@ -362,9 +373,10 @@
 				289C05AC238DC02A005458B0 /* RecipeList.swift in Sources */,
 				289C05AA238CA3C4005458B0 /* RecipeTableViewCell.swift in Sources */,
 				289C05BC239347BC005458B0 /* RecipeDetailsViewController.swift in Sources */,
+				284C387E23A6CCEE00BCA7A0 /* UIColor.swift in Sources */,
 				286C24EB239464D400E85384 /* FavoriteRecipe.swift in Sources */,
-				286C2533239ECF1100E85384 /* Extension.swift in Sources */,
 				2896CFCD23846731000D7101 /* AppDelegate.swift in Sources */,
+				284C388023A6CD2100BCA7A0 /* UIAlertController.swift in Sources */,
 				2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */,
 				286C2531239DD78500E85384 /* FavoriteRecipeViewController.swift in Sources */,
 				289C05BA23920C73005458B0 /* TimeView.swift in Sources */,

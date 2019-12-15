@@ -31,7 +31,7 @@ class RecipesViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier, let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
-            recipeDetailsVC.recipe = sender as? Hit
+            recipeDetailsVC.recipe = sender as? Recipe
         }
     }
 }
@@ -55,12 +55,12 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        let recipe = recipes.hits[indexPath.row]
-        RecipeListService().getRecipeImage(image: recipe.recipe.image) { (data) in
-            cell.recipeView.configure(name: recipe.recipe.label,
-                                      ingredients: recipe.recipe.ingredientLines.joined(separator: "; "),
-                                      like: recipe.recipe.yield,
-                                      time: recipe.recipe.totalTime,
+        let recipe = recipes.hits[indexPath.row].recipe
+        RecipeListService().getRecipeImage(image: recipe.image) { (data) in
+            cell.recipeView.configure(name: recipe.label,
+                                      ingredients: recipe.ingredientLines.joined(separator: "; "),
+                                      like: recipe.yield,
+                                      time: recipe.totalTime,
                                       imageData: data)
         }
         return cell
@@ -68,7 +68,7 @@ extension RecipesViewController: UITableViewDataSource, UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let recipes = recipeList else { return }
-        let recipe = recipes.hits[indexPath.row]
+        let recipe = recipes.hits[indexPath.row].recipe
         performSegue(withIdentifier: segueIdentifier, sender: recipe)
     }
 }

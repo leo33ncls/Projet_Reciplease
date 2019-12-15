@@ -16,8 +16,7 @@ class RecipeDetailsViewController: UIViewController {
     @IBOutlet weak var timeView: TimeView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
-    var recipe: Hit?
-    var favoriteRecipe: FavoriteRecipe?
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,92 +24,70 @@ class RecipeDetailsViewController: UIViewController {
         directionButton.layer.cornerRadius = 5.0
         
         if let currentRecipe = recipe {
-            recipeNameLabel.text = currentRecipe.recipe.label
-            timeView.setViewValues(like: currentRecipe.recipe.yield, time: currentRecipe.recipe.totalTime)
-            RecipeListService().getRecipeImage(image: currentRecipe.recipe.image) { (data) in
-                if let data = data {
-                    self.recipeImageView.image = UIImage(data: data)
-                }
-            }
-        } else if let currentRecipe = favoriteRecipe {
-            recipeNameLabel.text = currentRecipe.name
-            timeView.setViewValues(like: Int(currentRecipe.like), time: Int(currentRecipe.time))
-            RecipeListService().getRecipeImage(image: currentRecipe.image) { (data) in
-                if let data = data {
-                    self.recipeImageView.image = UIImage(data: data)
-                }
-            }
+            setFavoriteButtonColor(recipe: currentRecipe)
+            setValues(recipe: currentRecipe)
         } else {
             UIAlertController().showAlert(title: "Sorry!", message: "No recipe found!", viewController: self)
         }
+        
         tableView.reloadData()
     }
     
-    @IBAction func getDirections(_ sender: UIButton) {
-        if let currentRecipe = recipe, let url = URL(string: currentRecipe.recipe.url) {
-            UIApplication.shared.open(url)
-        } else if let currentRecipe = favoriteRecipe, let urlString = currentRecipe.url,
-            let url = URL(string: urlString) {
-            UIApplication.shared.open(url)
+    private func setFavoriteButtonColor(recipe: Recipe) {
+        if FavoriteRecipe.containsRecipe(recipe: recipe) {
+            rightBarButtonItem.tintColor = UIColor.customGreen
         } else {
-            UIAlertController().showAlert(title: "Sorry!", message: "No direction available!", viewController: self)
+            rightBarButtonItem.tintColor = UIColor.white
         }
+    }
+    
+    private func setValues(recipe: Recipe) {
+        recipeNameLabel.text = recipe.label
+        timeView.setViewValues(like: recipe.yield, time: recipe.totalTime)
+        RecipeListService().getRecipeImage(image: recipe.image) { (data) in
+            if let data = data {
+                self.recipeImageView.image = UIImage(data: data)
+            } else {
+                self.recipeImageView.image = #imageLiteral(resourceName: "recipeDefault")
+            }
+        }
+    }
+    
+    @IBAction func getDirections(_ sender: UIButton) {
+        guard let currentRecipe = recipe, let url = URL(string: currentRecipe.url) else {
+            UIAlertController().showAlert(title: "Sorry!", message: "No direction available!", viewController: self)
+            return
+        }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func setRecipeAsFavorite(_ sender: UIBarButtonItem) {
-        if let currentRecipe = recipe {
-            saveRecipe(recipe: currentRecipe)
-            
-        } else if let currentRecipe = favoriteRecipe {
-            removeRecipe(favoriteRecipe: currentRecipe)
+        if let currentRecipe = recipe, !FavoriteRecipe.containsRecipe(recipe: currentRecipe) {
+            FavoriteRecipe.saveRecipe(recipe: currentRecipe)
+            rightBarButtonItem.tintColor = UIColor.customGreen
+        } else if let currentRecipe = recipe, FavoriteRecipe.containsRecipe(recipe: currentRecipe) {
+            FavoriteRecipe.removeRecipe(recipe: currentRecipe)
+            rightBarButtonItem.tintColor = UIColor.white
         } else {
             UIAlertController().showAlert(title: "Sorry!", message: "No recipe to save!", viewController: self)
         }
-    }
-    
-    private func saveRecipe(recipe: Hit) {
-        let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
-        favoriteRecipe.name = recipe.recipe.label
-        favoriteRecipe.image = recipe.recipe.image
-        favoriteRecipe.ingredients = recipe.recipe.ingredientLines.joined(separator: "; ")
-        favoriteRecipe.like = Double(recipe.recipe.yield)
-        favoriteRecipe.time = Double(recipe.recipe.totalTime)
-        favoriteRecipe.url = recipe.recipe.url
-        try? AppDelegate.viewContext.save()
-    }
-    
-    private func removeRecipe(favoriteRecipe: FavoriteRecipe) {
-        AppDelegate.viewContext.delete(favoriteRecipe)
-        try? AppDelegate.viewContext.save()
     }
 }
 
 extension RecipeDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let currentRecipe = recipe {
-            return currentRecipe.recipe.ingredientLines.count
-        } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
-            let ingredientsArray = ingredients.components(separatedBy: "; ")
-            return ingredientsArray.count
-        } else {
-            return 0
-        }
+        guard let currentRecipe = recipe else { return 0 }
+        return currentRecipe.ingredientLines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let currentRecipe = recipe else { return UITableViewCell() }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as? IngredientTableViewCell else {
             return UITableViewCell()
         }
-        if let currentRecipe = recipe {
-            let ingredient = currentRecipe.recipe.ingredientLines[indexPath.row]
-            cell.configure(ingredient: ingredient)
-            return cell
-        } else if let currentRecipe = favoriteRecipe, let ingredients = currentRecipe.ingredients {
-            let ingredientsArray = ingredients.components(separatedBy: "; ")
-            cell.configure(ingredient: ingredientsArray[indexPath.row])
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        
+        let ingredient = currentRecipe.ingredientLines[indexPath.row]
+        cell.configure(ingredient: ingredient)
+        return cell
     }
 }

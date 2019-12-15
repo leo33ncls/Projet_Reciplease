@@ -15,12 +15,7 @@ class FavoriteRecipeViewController: UIViewController {
     
     let segueIdentifier = "favoriteToRecipeDetails"
     let cellIdentifier = "RecipeCell"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.reloadData()
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if FavoriteRecipe.all.count == 0 {
@@ -31,7 +26,7 @@ class FavoriteRecipeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier, let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
-            recipeDetailsVC.favoriteRecipe = sender as? FavoriteRecipe
+            recipeDetailsVC.recipe = sender as? Recipe
         }
     }
 }
@@ -52,10 +47,10 @@ extension FavoriteRecipeViewController: UITableViewDelegate, UITableViewDataSour
         }
         let recipe = FavoriteRecipe.all[indexPath.row]
         RecipeListService().getRecipeImage(image: recipe.image) { (data) in
-            cell.recipeView.configure(name: recipe.name,
-                                      ingredients: recipe.ingredients,
-                                      like: Int(recipe.like),
-                                      time: Int(recipe.time),
+            cell.recipeView.configure(name: recipe.label,
+                                      ingredients: recipe.ingredientLines.joined(separator: "; "),
+                                      like: Int(recipe.yield),
+                                      time: Int(recipe.totalTime),
                                       imageData: data)
         }
         return cell
