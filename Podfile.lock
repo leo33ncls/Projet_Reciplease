@@ -1,16 +1,29 @@
 PODS:
   - Alamofire (4.9.1)
+  - Mockingjay (2.0.1):
+    - Mockingjay/Core (= 2.0.1)
+    - Mockingjay/XCTest (= 2.0.1)
+  - Mockingjay/Core (2.0.1):
+    - URITemplate (~> 2.0)
+  - Mockingjay/XCTest (2.0.1):
+    - Mockingjay/Core
+  - URITemplate (2.0.3)
 
 DEPENDENCIES:
   - Alamofire
+  - Mockingjay
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Mockingjay
+    - URITemplate
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
+  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 9f7219de821decec2dc754142cb49e0e1db4318a
+PODFILE CHECKSUM: 27b2ce2dbe23546befb065df146417bada9a66c7
 
 COCOAPODS: 1.8.4

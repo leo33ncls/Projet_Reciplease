@@ -10,7 +10,7 @@ import XCTest
 import CoreData
 @testable import Reciplease
 
-class RecipeListServiceTestCase: XCTestCase {
+class FavoriteRecipeTestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
