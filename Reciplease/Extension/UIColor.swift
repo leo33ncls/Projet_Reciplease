@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    // Custom grey color
     public class var customGrey: UIColor {
         return UIColor(red: 51/255, green: 47/255, blue: 46/255, alpha: 1.0)
     }
-    
+
+    // Custom green color
     public class var customGreen: UIColor {
         return UIColor(red: 19/255, green: 127/255, blue: 77/255, alpha: 1.0)
     }

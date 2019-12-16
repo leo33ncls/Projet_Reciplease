@@ -9,23 +9,31 @@
 import UIKit
 
 class TimeView: UIView {
-    
+
+    //=================
+    // Outlet
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var timeImageView: UIImageView!
-    
+
+    //=================
+    // Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
+    //=================
+    // Function
+
+    // Init of the view from the xib file
     private func commonInit() {
         Bundle.main.loadNibNamed("TimeView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +48,8 @@ class TimeView: UIView {
         layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1.0
     }
-    
+
+    // Function which sets like and time values to the labels in the view
     func setViewValues(like: Int, time: Int) {
         ratingImageView.image = #imageLiteral(resourceName: "likeIcon")
         timeImageView.image = #imageLiteral(resourceName: "timeIcon")

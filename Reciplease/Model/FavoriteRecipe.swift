@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 class FavoriteRecipe: NSManagedObject {
-    
+
+    // Function which saves a recipe as a FavoriteRecipe in the CoreData database
     static func saveRecipe(recipe: Recipe) {
         let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
         favoriteRecipe.name = recipe.label
@@ -21,32 +22,33 @@ class FavoriteRecipe: NSManagedObject {
         favoriteRecipe.url = recipe.url
         try? AppDelegate.viewContext.save()
     }
-    
+
+    // Function which removes a recipe from the database based on the recipe name
     static func removeRecipe(recipe: Recipe) {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         request.predicate = NSPredicate(format: "name == %@", "\(recipe.label)")
-        
+
         do {
             let recipes = try AppDelegate.viewContext.fetch(request)
             for recipe in recipes {
                 AppDelegate.viewContext.delete(recipe)
             }
             try? AppDelegate.viewContext.save()
-        }
-        catch
-        {
+        } catch {
             print(error)
         }
     }
-    
+
+    // Function which says if a recipe is in the database based on the recipe name
     static func containsRecipe(recipe: Recipe) -> Bool {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         request.predicate = NSPredicate(format: "name CONTAINS %@", "\(recipe.label)")
-        
+
         guard let recipes = try? AppDelegate.viewContext.fetch(request), recipes.count > 0 else { return false }
         return true
     }
-    
+
+    // Variable which returns all the recipes in the database
     static var all: [Recipe] {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         guard let favoriteRecipes = try? AppDelegate.viewContext.fetch(request) else { return [] }
@@ -54,6 +56,7 @@ class FavoriteRecipe: NSManagedObject {
         return recipes
     }
 
+    // Private func which convert an array of Favorite objet to an array of Recipe objet
     private static func favoriteRecipesToRecipes(favoriteRecipes: [FavoriteRecipe]) -> [Recipe]? {
         var recipes = [Recipe]()
         for favoriteRecipe in favoriteRecipes {

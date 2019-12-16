@@ -9,12 +9,11 @@
 import UIKit
 
 class IngredientTableViewCell: UITableViewCell {
-    @IBOutlet weak var ingredientLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    // Outlet
+    @IBOutlet weak var ingredientLabel: UILabel!
 
+    // Function which sets an ingredient to the ingredientLabel
     func configure(ingredient: String) {
         ingredientLabel.text = "- \(ingredient)"
     }

@@ -9,9 +9,11 @@
 import Foundation
 
 class APIKeysService {
+    // Variable name of API Key in the plist file
     static let recipeAPIId = "recipeAPIId"
     static let recipeAPIKey = "recipeAPIKey"
-    
+
+    // Function which returns the API Key from a plist file
     static func valueForAPIKey(named keyname: String) -> String? {
         if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
             let keys = NSDictionary(contentsOfFile: path)

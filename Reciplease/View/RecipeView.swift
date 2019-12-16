@@ -9,23 +9,31 @@
 import UIKit
 
 class RecipeView: UIView {
-    
+
+    //=================
+    // Outlet
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeView: TimeView!
-    
+
+    //=================
+    // Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
+    //=================
+    // Function
+
+    // Init of the view from the xib file
     private func commonInit() {
         Bundle.main.loadNibNamed("RecipeView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,10 +42,13 @@ class RecipeView: UIView {
         contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView, shadowColor: UIColor.black, shadowRadius: 60.0))
+
+        recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView,
+                                                            shadowColor: UIColor.black,
+                                                            shadowRadius: 60.0))
     }
-    
+
+    // Function which gives values to the view
     func configure(name: String?, ingredients: String?, like: Int, time: Int, imageData: Data?) {
         nameLabel.text = name
         ingredientsLabel.text = ingredients
