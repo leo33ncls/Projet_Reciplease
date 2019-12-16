@@ -10,6 +10,8 @@
 		2845B0AB23847C33003D4539 /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B0AA23847C33003D4539 /* IngredientsViewController.swift */; };
 		284C387E23A6CCEE00BCA7A0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C387D23A6CCEE00BCA7A0 /* UIColor.swift */; };
 		284C388023A6CD2100BCA7A0 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C387F23A6CD2100BCA7A0 /* UIAlertController.swift */; };
+		284C388323A7B4FC00BCA7A0 /* APIKeysServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C388223A7B4FC00BCA7A0 /* APIKeysServiceTestCase.swift */; };
+		284C388523A7B76800BCA7A0 /* KeysTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 284C388423A7B76800BCA7A0 /* KeysTest.plist */; };
 		286C1317239FF19E00D7576E /* FavoriteRecipeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */; };
 		286C24E423935C1F00E85384 /* CustomShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E323935C1F00E85384 /* CustomShadowLayer.swift */; };
 		286C24E723945E9700E85384 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 286C24E523945E9700E85384 /* Reciplease.xcdatamodeld */; };
@@ -49,6 +51,8 @@
 		2845B0AA23847C33003D4539 /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		284C387D23A6CCEE00BCA7A0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		284C387F23A6CD2100BCA7A0 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		284C388223A7B4FC00BCA7A0 /* APIKeysServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeysServiceTestCase.swift; sourceTree = "<group>"; };
+		284C388423A7B76800BCA7A0 /* KeysTest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KeysTest.plist; sourceTree = "<group>"; };
 		286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeTestCase.swift; sourceTree = "<group>"; };
 		286C24E323935C1F00E85384 /* CustomShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowLayer.swift; sourceTree = "<group>"; };
 		286C24E623945E9700E85384 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 			children = (
 				286C251E23959CFA00E85384 /* RecipeListServiceTestCase.swift */,
 				286C1316239FF19E00D7576E /* FavoriteRecipeTestCase.swift */,
+				284C388223A7B4FC00BCA7A0 /* APIKeysServiceTestCase.swift */,
+				284C388423A7B76800BCA7A0 /* KeysTest.plist */,
 				286C251823959C8100E85384 /* Info.plist */,
 			);
 			path = RecipleaseTests;
@@ -293,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284C388523A7B76800BCA7A0 /* KeysTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				286C251F23959CFA00E85384 /* RecipeListServiceTestCase.swift in Sources */,
+				284C388323A7B4FC00BCA7A0 /* APIKeysServiceTestCase.swift in Sources */,
 				286C1317239FF19E00D7576E /* FavoriteRecipeTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

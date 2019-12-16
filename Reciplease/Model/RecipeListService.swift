@@ -17,12 +17,17 @@ class RecipeListService {
     private func createRecipeURL(ingredients: [String]) -> URL? {
         let appId = APIKeysService.recipeAPIId
         let appKey = APIKeysService.recipeAPIKey
+        let fileName = APIKeysService.fileName
 
         let stringIngredient = ingredients.joined(separator: " ")
         var recipeURL = URLComponents(string: RecipeListService.recipeBaseURL)
         recipeURL?.queryItems = [URLQueryItem(name: "q", value: stringIngredient),
-                                 URLQueryItem(name: "app_id", value: APIKeysService.valueForAPIKey(named: appId)),
-                                 URLQueryItem(name: "app_key", value: APIKeysService.valueForAPIKey(named: appKey))]
+                                 URLQueryItem(name: "app_id", value: APIKeysService
+                                    .valueForAPIKey(named: appId, fileName: fileName,
+                                                    bundleClass: RecipeListService.self)),
+                                 URLQueryItem(name: "app_key", value: APIKeysService
+                                    .valueForAPIKey(named: appKey, fileName: fileName,
+                                                    bundleClass: RecipeListService.self))]
 
         guard let url = recipeURL?.url else { return nil }
         return url
