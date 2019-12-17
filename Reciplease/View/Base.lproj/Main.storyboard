@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="ojv-Xy-5OO">
             <objects>
-                <tabBarController id="oQ9-sU-feN" sceneMemberID="viewController">
+                <tabBarController id="oQ9-sU-feN" customClass="CustomTabBarController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="04c-qQ-h7N"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QbZ-8e-cb7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -167,7 +167,7 @@
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="qpC-Fy-6Dk">

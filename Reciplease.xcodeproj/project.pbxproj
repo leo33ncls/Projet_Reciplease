@@ -37,6 +37,9 @@
 		289C05BC239347BC005458B0 /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289C05BB239347BC005458B0 /* RecipeDetailsViewController.swift */; };
 		28C8673A23A7D723000F019B /* RecipeList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C8673923A7D723000F019B /* RecipeList.json */; };
 		28C8673C23A7D7CE000F019B /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C8673B23A7D7CE000F019B /* FakeResponseData.swift */; };
+		28C8674823A82DA9000F019B /* CustomTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C8674723A82DA9000F019B /* CustomTabBar.xib */; };
+		28C8674A23A82DD4000F019B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C8674923A82DD4000F019B /* CustomTabBar.swift */; };
+		28C8674C23A83067000F019B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C8674B23A83067000F019B /* CustomTabBarController.swift */; };
 		82720334A06A58A64CCA3409 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C5449F13B585E71B574453 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,9 @@
 		289C05BB239347BC005458B0 /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 		28C8673923A7D723000F019B /* RecipeList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipeList.json; sourceTree = "<group>"; };
 		28C8673B23A7D7CE000F019B /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		28C8674723A82DA9000F019B /* CustomTabBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBar.xib; sourceTree = "<group>"; };
+		28C8674923A82DD4000F019B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		28C8674B23A83067000F019B /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		81C5449F13B585E71B574453 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1CE3085DF493037DB1C842 /* Pods-RecipleaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.release.xcconfig"; path = "Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		A9FD2728572A1548D9D9D925 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +211,9 @@
 				289C05B923920C73005458B0 /* TimeView.swift */,
 				286C252C239DC01B00E85384 /* RecipeView.xib */,
 				286C252E239DC0A100E85384 /* RecipeView.swift */,
+				28C8674723A82DA9000F019B /* CustomTabBar.xib */,
+				28C8674923A82DD4000F019B /* CustomTabBar.swift */,
+				28C8674B23A83067000F019B /* CustomTabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C8674823A82DA9000F019B /* CustomTabBar.xib in Resources */,
 				289C05B223905B24005458B0 /* Keys.plist in Resources */,
 				2896CFD723846733000D7101 /* LaunchScreen.storyboard in Resources */,
 				286C252D239DC01B00E85384 /* RecipeView.xib in Resources */,
@@ -434,8 +444,10 @@
 			files = (
 				286C24E723945E9700E85384 /* Reciplease.xcdatamodeld in Sources */,
 				289C05A8238CA233005458B0 /* RecipesViewController.swift in Sources */,
+				28C8674C23A83067000F019B /* CustomTabBarController.swift in Sources */,
 				286C24E423935C1F00E85384 /* CustomShadowLayer.swift in Sources */,
 				289C05AC238DC02A005458B0 /* RecipeList.swift in Sources */,
+				28C8674A23A82DD4000F019B /* CustomTabBar.swift in Sources */,
 				289C05AA238CA3C4005458B0 /* RecipeTableViewCell.swift in Sources */,
 				289C05BC239347BC005458B0 /* RecipeDetailsViewController.swift in Sources */,
 				284C387E23A6CCEE00BCA7A0 /* UIColor.swift in Sources */,
