@@ -28,9 +28,9 @@ class RecipeListServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
 
-    func testGetRecipeListShouldPostFailedCallbackIfNoData() {
+    func testGetRecipeListShouldPostFailedCallbackIfError() {
         // Given
-        stub(everything, FakeResponseData.notFoundStub)
+        stub(everything, failure(FakeResponseData.error))
         let recipeListService = RecipeListService()
 
         // When
@@ -78,7 +78,6 @@ class RecipeListServiceTestCase: XCTestCase {
         let recipeListService = RecipeListService()
 
         // When
-        //let expectation = XCTestExpectation(description: "Wait for queue change.")
         recipeListService.getRecipeImage(image: nil) { (data) in
             // Then
             XCTAssertNil(data)
@@ -87,17 +86,14 @@ class RecipeListServiceTestCase: XCTestCase {
     }
 
     func testGetRecipeImageShouldReturnDataIfImageData() {
-    // Given
-    stub(everything, jsonData(FakeResponseData.imageData))
-    let recipeListService = RecipeListService()
+        // Given
+        stub(everything, jsonData(FakeResponseData.imageData))
+        let recipeListService = RecipeListService()
 
-    // When
-    //let expectation = XCTestExpectation(description: "Wait for queue change.")
-    recipeListService.getRecipeImage(image: "https://www.edamam.com/web-img/78e/78ef0e463d0aadbf2caf7b6237cd5f12.jpg") { (data) in
-        // Then
-        XCTAssertNotNil(data)
+        // When
+        recipeListService.getRecipeImage(image: "https://www.edamam.com/web-img/78e/78ef0e463d0aadbf2caf7b6237cd5f12.jpg") { (data) in
+            // Then
+            XCTAssertNotNil(data)
+        }
     }
-    //wait(for: [expectation], timeout: 0.1)
-    }
-    
 }

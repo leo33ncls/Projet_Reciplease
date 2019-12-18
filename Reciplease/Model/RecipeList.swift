@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 // MARK: - RecipeList
 struct RecipeList: Decodable {
@@ -23,6 +24,7 @@ struct Hit: Decodable {
 
 // MARK: - Recipe
 struct Recipe: Decodable {
+    let uri: String
     let label: String
     let image: String
     let url: String

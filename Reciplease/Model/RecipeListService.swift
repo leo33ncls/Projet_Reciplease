@@ -41,7 +41,7 @@ class RecipeListService {
         }
 
         Alamofire.request(url).responseJSON { (response) in
-            guard let data = response.data else {
+            guard let data = response.data, response.error == nil else {
                 callback(false, nil)
                 return
             }

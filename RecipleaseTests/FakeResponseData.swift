@@ -22,7 +22,13 @@ class FakeResponseData {
     static let imageData = "image".data(using: .utf8)!
 
     // Variable which simulates an incorrect data
-    static let incorrectData = "erreur".data(using: .utf8)!
+    private static let data = """
+    {
+        "q": "Lemon"
+    }
+    """
+    static let incorrectData = FakeResponseData.data.data(using: .utf8)!
     
-    static let notFoundStub = http(404, headers: nil, download: nil)
+    // Variable which simulates an NSError
+    static let error = NSError(domain: "", code: 1, userInfo: nil)
 }

@@ -16,7 +16,10 @@ class IngredientsViewController: UIViewController {
     // Outlet
     @IBOutlet weak var ingredientsTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var searchRecipesButton: UIButton!
+    @IBOutlet weak var addIngredientButton: UIButton!
+    @IBOutlet weak var clearListButton: UIButton!
+    
     // An array of the ingredients chosen by the user
     var ingredients = [String]()
     
@@ -26,6 +29,12 @@ class IngredientsViewController: UIViewController {
 
     //===================
     // View Cycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchRecipesButton.layer.cornerRadius = 2.0
+        addIngredientButton.layer.cornerRadius = 2.0
+        clearListButton.layer.cornerRadius = 2.0
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier, let recipesVC = segue.destination as? RecipesViewController {
             recipesVC.ingredients = ingredients

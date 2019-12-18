@@ -14,6 +14,7 @@ class FavoriteRecipe: NSManagedObject {
     // Function which saves a recipe as a FavoriteRecipe in the CoreData database
     static func saveRecipe(recipe: Recipe) {
         let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
+        favoriteRecipe.uri = recipe.uri
         favoriteRecipe.name = recipe.label
         favoriteRecipe.image = recipe.image
         favoriteRecipe.ingredients = recipe.ingredientLines.joined(separator: "; ")
@@ -26,7 +27,7 @@ class FavoriteRecipe: NSManagedObject {
     // Function which removes a recipe from the database based on the recipe name
     static func removeRecipe(recipe: Recipe) {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-        request.predicate = NSPredicate(format: "name == %@", "\(recipe.label)")
+        request.predicate = NSPredicate(format: "uri == %@", "\(recipe.uri)")
 
         do {
             let recipes = try AppDelegate.viewContext.fetch(request)
@@ -42,7 +43,7 @@ class FavoriteRecipe: NSManagedObject {
     // Function which says if a recipe is in the database based on the recipe name
     static func containsRecipe(recipe: Recipe) -> Bool {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-        request.predicate = NSPredicate(format: "name CONTAINS %@", "\(recipe.label)")
+        request.predicate = NSPredicate(format: "uri CONTAINS %@", "\(recipe.uri)")
 
         guard let recipes = try? AppDelegate.viewContext.fetch(request), recipes.count > 0 else { return false }
         return true
@@ -60,15 +61,18 @@ class FavoriteRecipe: NSManagedObject {
     private static func favoriteRecipesToRecipes(favoriteRecipes: [FavoriteRecipe]) -> [Recipe]? {
         var recipes = [Recipe]()
         for favoriteRecipe in favoriteRecipes {
-            guard let name = favoriteRecipe.name,
+            guard let uri = favoriteRecipe.uri,
+                let name = favoriteRecipe.name,
                 let image = favoriteRecipe.image,
                 let ingredients = favoriteRecipe.ingredients,
                 let url = favoriteRecipe.url else {
                     return nil
             }
-            recipes.append(Recipe(label: name,
+            recipes.append(Recipe(uri: uri,
+                                  label: name,
                                   image: image,
-                                  url: url, yield: Int(favoriteRecipe.like),
+                                  url: url,
+                                  yield: Int(favoriteRecipe.like),
                                   ingredientLines: ingredients.components(separatedBy: "; "),
                                   totalTime: Int(favoriteRecipe.time)))
         }

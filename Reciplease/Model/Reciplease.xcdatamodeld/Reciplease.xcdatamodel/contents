@@ -6,9 +6,10 @@
         <attribute name="like" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="time" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uri" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FavoriteRecipe" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="FavoriteRecipe" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

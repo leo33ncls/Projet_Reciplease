@@ -18,8 +18,9 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
     
     func insertRecipeData() {
-        func insertFavoriteRecipe(name: String, image: String, ingredients: String, like: Double, time: Double, url: String) {
+        func insertFavoriteRecipe(uri: String, name: String, image: String, ingredients: String, like: Double, time: Double, url: String) {
             let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
+            favoriteRecipe.uri = uri
             favoriteRecipe.name = name
             favoriteRecipe.image = image
             favoriteRecipe.ingredients = ingredients
@@ -28,7 +29,8 @@ class FavoriteRecipeTestCase: XCTestCase {
             favoriteRecipe.url = url
         }
         
-        insertFavoriteRecipe(name: "Lemon Risotto",
+        insertFavoriteRecipe(uri: "http://www.edamam.com/ontologies/9199ad45bd7fb16cda8d08c3e30771c2",
+                             name: "Lemon Risotto",
                              image: "https://www.edamam.com/web-img/3a9/3a91b23c3e102678c5b72ce0b6e006de.jpg",
                              ingredients: "Lemon; Sugar",
                              like: 12,
@@ -36,7 +38,8 @@ class FavoriteRecipeTestCase: XCTestCase {
                              url: "http://smittenkitchen.com/2007/06/catch-up-solstice-edition/")
         try? AppDelegate.viewContext.save()
         
-        insertFavoriteRecipe(name: "Apple crunch",
+        insertFavoriteRecipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
+                             name: "Apple crunch",
                              image: "https://apple-fakeimage.jpg",
                              ingredients: "Apple; biscuits",
                              like: 15,
@@ -54,7 +57,8 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
     
     func testGivenARecipe_WhenSaveRecipeIsCalledOnTheRecipe_ThenTheRecipeShouldBeSaveOnTheDatabaseWithHisInfos() {
-        let recipe = Recipe(label: "Pasta Carbonara",
+        let recipe = Recipe(uri: "http://www.edamam.com/ontologies/f00df78e779c210808de541c2a476a07",
+                            label: "Pasta Carbonara",
                             image: "https://pasta-image.jpg",
                             url: "https://pasta-carbonara.com/",
                             yield: 12,
@@ -73,7 +77,8 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
     
     func testGivenARecipeContainedInTheDatabase_WhenRemoveRecipeIsCalled_ThenTheRecipeShouldBeRemoved() {
-        let recipe = Recipe(label: "Apple crunch",
+        let recipe = Recipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
+                            label: "Apple crunch",
                             image: "https://apple-fakeimage.jpg",
                             url: "https://fakerecipe.com/",
                             yield: 15,
@@ -86,7 +91,8 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
 
     func testGivenARecipeNoContainedInTheDatabase_WhenRemoveRecipeIsCalled_ThenNothingShouldBeRemoved() {
-        let recipe = Recipe(label: "Tomato Soup",
+        let recipe = Recipe(uri: "http://www.edamam.com/ontologies/45jf66fhe7",
+                            label: "Tomato Soup",
                             image: "https://",
                             url: "https://",
                             yield: 0,
@@ -99,7 +105,8 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
     
     func testGivenARecipeContainedInTheDatabase_WhenContainsRecipeIsCalled_ThenReturnShouldBeTrue() {
-        let recipe = Recipe(label: "Apple crunch",
+        let recipe = Recipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
+                            label: "Apple crunch",
                             image: "https://apple-fakeimage.jpg",
                             url: "https://fakerecipe.com/",
                             yield: 15,
@@ -112,7 +119,8 @@ class FavoriteRecipeTestCase: XCTestCase {
     }
     
     func testGivenARecipeNoContainedInTheDatabase_WhenContainsRecipeIsCalled_ThenReturnShouldBeFalse() {
-        let recipe = Recipe(label: "Tomato Soup",
+        let recipe = Recipe(uri: "http://www.edamam.com/ontologies/45jf66fhe7",
+                            label: "Tomato Soup",
                             image: "https://",
                             url: "https://",
                             yield: 0,
