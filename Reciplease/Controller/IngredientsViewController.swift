@@ -32,6 +32,7 @@ class IngredientsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchRecipesButton.layer.cornerRadius = 2.0
+        searchRecipesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         addIngredientButton.layer.cornerRadius = 2.0
         clearListButton.layer.cornerRadius = 2.0
     }
@@ -53,6 +54,7 @@ class IngredientsViewController: UIViewController {
             return
         }
         ingredients.append(ingredient)
+        ingredientsTextField.text = ""
         tableView.reloadData()
     }
 

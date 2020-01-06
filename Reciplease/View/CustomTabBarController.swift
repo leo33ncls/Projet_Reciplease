@@ -9,33 +9,34 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
-    private var _customTabBar: CustomTabBar!
+    private var customBar: CustomTabBar!
     
     var customTabBar: CustomTabBar{
         get {
-            return _customTabBar
+            return customBar
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.isHidden = true
+        self.tabBar.alpha = 0
+        self.tabBar.isUserInteractionEnabled = false
         
         initViews()
     }
     
     private func initViews() {
-        _customTabBar = CustomTabBar.getFromNib()
+        customBar = CustomTabBar.getFromNib()
         self.view.addSubview(customTabBar)
         setupTabBar()
     }
     
     private func setupTabBar() {
-        _customTabBar.setActionSearchTapped {
+        customBar.setActionSearchTapped {
             self.selectedIndex = 0
         }
         
-        _customTabBar.setActionFavoriteTapped {
+        customBar.setActionFavoriteTapped {
             self.selectedIndex = 1
         }
         
@@ -43,10 +44,10 @@ class CustomTabBarController: UITabBarController {
     }
     
     private func setupTabBarAutoLayout() {
-        _customTabBar.translatesAutoresizingMaskIntoConstraints = false
+        customBar.translatesAutoresizingMaskIntoConstraints = false
         
-        _customTabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        _customTabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        _customTabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        customBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        customBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        customBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
