@@ -63,7 +63,7 @@ class IngredientsViewController: UIViewController {
         ingredients.removeAll()
         tableView.reloadData()
     }
-
+    
     // Action which perform a segue
     @IBAction func searchRecipes(_ sender: UIButton) {
         guard ingredients.count >= 1 else {
@@ -95,5 +95,18 @@ extension IngredientsViewController: UITableViewDataSource {
         // Display an ingredient in a custom cell
         cell.configure(ingredient: ingredient)
         return cell
+    }
+}
+
+// MARK: - Keyboard
+extension IngredientsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Action that dismiss the keyboard when the user taps on the main view
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        ingredientsTextField.resignFirstResponder()
     }
 }
