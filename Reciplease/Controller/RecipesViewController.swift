@@ -13,7 +13,8 @@ class RecipesViewController: UIViewController {
     //===================
     // View Properties
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // Array of ingredients received from IngredientsVC
     var ingredients = [String]()
     
@@ -29,10 +30,18 @@ class RecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // The request which return a recipe list with the ingredients chosen
+        manageActivityIndicator(shown: true)
+
         RecipeListService().getRecipeList(ingredients: ingredients) { (success, recipes) in
-            if success, let recipes = recipes {
+            self.manageActivityIndicator(shown: false)
+
+            if success, let recipes = recipes, recipes.count > 0 {
                 self.recipeList = recipes
                 self.tableView.reloadData()
+
+            } else if success, let recipes = recipes, recipes.count == 0 {
+                UIAlertController().showAlert(title: "No Recipe Found", message: "Please, try a new search !", viewController: self)
+
             } else {
                 UIAlertController().showAlert(title: "Warning!", message: "Invalid Request!", viewController: self)
             }
@@ -43,6 +52,16 @@ class RecipesViewController: UIViewController {
         if segue.identifier == segueIdentifier,
             let recipeDetailsVC = segue.destination as? RecipeDetailsViewController {
             recipeDetailsVC.recipe = sender as? Recipe
+        }
+    }
+
+    // Function which manages the display of the activity indicator
+    private func manageActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        if shown {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
         }
     }
 }
