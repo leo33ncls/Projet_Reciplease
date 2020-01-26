@@ -61,7 +61,7 @@ class RecipeListService {
             completionHandler(nil)
             return
         }
-        
+
         Alamofire.request(imageURL).responseJSON { (response) in
             guard let imageData = response.data else {
                 completionHandler(nil)

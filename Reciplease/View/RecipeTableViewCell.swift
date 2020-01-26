@@ -9,7 +9,7 @@
 import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
-    
+
     // Outlet
     @IBOutlet weak var recipeView: RecipeView!
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class IngredientTableViewCell: UITableViewCell {
-    
+
     // Outlet
     @IBOutlet weak var ingredientLabel: UILabel!
 

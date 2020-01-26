@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomShadowLayer: CAGradientLayer {
-    
+
     // Init
     init(view: UIView, shadowColor: UIColor, shadowRadius: CGFloat) {
         super.init()

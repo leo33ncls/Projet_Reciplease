@@ -16,9 +16,10 @@ class FavoriteRecipeTestCase: XCTestCase {
         super.setUp()
         insertRecipeData()
     }
-    
+
     func insertRecipeData() {
-        func insertFavoriteRecipe(uri: String, name: String, image: String, ingredients: String, like: Double, time: Double, url: String) {
+        func insertFavoriteRecipe(uri: String, name: String, image: String,
+                                  ingredients: String, like: Double, time: Double, url: String) {
             let favoriteRecipe = FavoriteRecipe(context: AppDelegate.viewContext)
             favoriteRecipe.uri = uri
             favoriteRecipe.name = name
@@ -28,7 +29,7 @@ class FavoriteRecipeTestCase: XCTestCase {
             favoriteRecipe.time = time
             favoriteRecipe.url = url
         }
-        
+
         insertFavoriteRecipe(uri: "http://www.edamam.com/ontologies/9199ad45bd7fb16cda8d08c3e30771c2",
                              name: "Lemon Risotto",
                              image: "https://www.edamam.com/web-img/3a9/3a91b23c3e102678c5b72ce0b6e006de.jpg",
@@ -37,7 +38,7 @@ class FavoriteRecipeTestCase: XCTestCase {
                              time: 25,
                              url: "http://smittenkitchen.com/2007/06/catch-up-solstice-edition/")
         try? AppDelegate.viewContext.save()
-        
+
         insertFavoriteRecipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
                              name: "Apple crunch",
                              image: "https://apple-fakeimage.jpg",
@@ -47,15 +48,15 @@ class FavoriteRecipeTestCase: XCTestCase {
                              url: "https://fakerecipe.com/")
         try? AppDelegate.viewContext.save()
     }
-    
+
     func testAllShouldReturnThe2RecipesLemonRisottoAndAppleCrunch() {
         let recipes = FavoriteRecipe.all
-        
+
         XCTAssertEqual(recipes.count, 2)
         XCTAssertEqual(recipes[0].label, "Lemon Risotto")
         XCTAssertEqual(recipes[1].label, "Apple crunch")
     }
-    
+
     func testGivenARecipe_WhenSaveRecipeIsCalledOnTheRecipe_ThenTheRecipeShouldBeSaveOnTheDatabaseWithHisInfos() {
         let recipe = Recipe(uri: "http://www.edamam.com/ontologies/f00df78e779c210808de541c2a476a07",
                             label: "Pasta Carbonara",
@@ -64,7 +65,7 @@ class FavoriteRecipeTestCase: XCTestCase {
                             yield: 12,
                             ingredientLines: ["Pasta", "Gibs", "Fresh Cream"],
                             totalTime: 20)
-        
+
         FavoriteRecipe.saveRecipe(recipe: recipe)
 
         XCTAssertEqual(FavoriteRecipe.all.count, 3)
@@ -75,7 +76,7 @@ class FavoriteRecipeTestCase: XCTestCase {
         XCTAssertEqual(FavoriteRecipe.all[2].yield, recipe.yield)
         XCTAssertEqual(FavoriteRecipe.all[2].totalTime, recipe.totalTime)
     }
-    
+
     func testGivenARecipeContainedInTheDatabase_WhenRemoveRecipeIsCalled_ThenTheRecipeShouldBeRemoved() {
         let recipe = Recipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
                             label: "Apple crunch",
@@ -84,9 +85,9 @@ class FavoriteRecipeTestCase: XCTestCase {
                             yield: 15,
                             ingredientLines: ["Apple", "biscuits"],
                             totalTime: 0)
-        
+
         FavoriteRecipe.removeRecipe(recipe: recipe)
-        
+
         XCTAssertEqual(FavoriteRecipe.all.count, 1)
     }
 
@@ -98,12 +99,12 @@ class FavoriteRecipeTestCase: XCTestCase {
                             yield: 0,
                             ingredientLines: [],
                             totalTime: 0)
-        
+
         FavoriteRecipe.removeRecipe(recipe: recipe)
-        
+
         XCTAssertEqual(FavoriteRecipe.all.count, 2)
     }
-    
+
     func testGivenARecipeContainedInTheDatabase_WhenContainsRecipeIsCalled_ThenReturnShouldBeTrue() {
         let recipe = Recipe(uri: "http://www.edamam.com/ontologies/dh45gj23lsbg99bcj",
                             label: "Apple crunch",
@@ -112,12 +113,12 @@ class FavoriteRecipeTestCase: XCTestCase {
                             yield: 15,
                             ingredientLines: ["Apple", "biscuits"],
                             totalTime: 0)
-        
+
         let isContained = FavoriteRecipe.containsRecipe(recipe: recipe)
-        
+
         XCTAssertTrue(isContained)
     }
-    
+
     func testGivenARecipeNoContainedInTheDatabase_WhenContainsRecipeIsCalled_ThenReturnShouldBeFalse() {
         let recipe = Recipe(uri: "http://www.edamam.com/ontologies/45jf66fhe7",
                             label: "Tomato Soup",
@@ -126,17 +127,17 @@ class FavoriteRecipeTestCase: XCTestCase {
                             yield: 0,
                             ingredientLines: [],
                             totalTime: 0)
-        
+
         let isContained = FavoriteRecipe.containsRecipe(recipe: recipe)
-        
+
         XCTAssertFalse(isContained)
     }
-    
+
     override func tearDown() {
         super.tearDown()
         flushData()
     }
-    
+
     func flushData() {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         do {

@@ -9,15 +9,15 @@
 import UIKit
 
 class RecipesViewController: UIViewController {
-    
+
     //===================
     // View Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     // Array of ingredients received from IngredientsVC
     var ingredients = [String]()
-    
+
     // The recipe list gotten from the request
     var recipeList: RecipeList?
 
@@ -40,8 +40,9 @@ class RecipesViewController: UIViewController {
                 self.tableView.reloadData()
 
             } else if success, let recipes = recipes, recipes.count == 0 {
-                UIAlertController().showAlert(title: "No Recipe Found", message: "Please, try a new search !", viewController: self)
-
+                UIAlertController().showAlert(title: "No Recipe Found",
+                                              message: "Please, try a new search !",
+                                              viewController: self)
             } else {
                 UIAlertController().showAlert(title: "Warning!", message: "Invalid Request!", viewController: self)
             }

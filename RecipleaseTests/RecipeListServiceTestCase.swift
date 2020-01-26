@@ -78,11 +78,14 @@ class RecipeListServiceTestCase: XCTestCase {
         let recipeListService = RecipeListService()
 
         // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
         recipeListService.getRecipeImage(image: nil) { (data) in
             // Then
             XCTAssertNil(data)
+
+            expectation.fulfill()
         }
-        //wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.5)
     }
 
     func testGetRecipeImageShouldReturnDataIfImageData() {
@@ -91,9 +94,14 @@ class RecipeListServiceTestCase: XCTestCase {
         let recipeListService = RecipeListService()
 
         // When
-        recipeListService.getRecipeImage(image: "https://www.edamam.com/web-img/78e/78ef0e463d0aadbf2caf7b6237cd5f12.jpg") { (data) in
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        recipeListService.getRecipeImage(image:
+        "https://www.edamam.com/web-img/78e/78ef0e463d0aadbf2caf7b6237cd5f12.jpg") { (data) in
             // Then
             XCTAssertNotNil(data)
+
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 0.5)
     }
 }

@@ -42,7 +42,7 @@ class TimeView: UIView {
         contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
+
         clipsToBounds = true
         layer.cornerRadius = 5.0
         layer.borderColor = UIColor.white.cgColor

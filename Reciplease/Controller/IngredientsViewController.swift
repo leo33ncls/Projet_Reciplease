@@ -19,10 +19,10 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var searchRecipesButton: UIButton!
     @IBOutlet weak var addIngredientButton: UIButton!
     @IBOutlet weak var clearListButton: UIButton!
-    
+
     // An array of the ingredients chosen by the user
     var ingredients = [String]()
-    
+
     // Identifier Name
     let segueIdentifier = "ingredientToRecipes"
     let cellIdentifier = "IngredientCell"
@@ -63,7 +63,7 @@ class IngredientsViewController: UIViewController {
         ingredients.removeAll()
         tableView.reloadData()
     }
-    
+
     // Action which perform a segue
     @IBAction func searchRecipes(_ sender: UIButton) {
         guard ingredients.count >= 1 else {
@@ -104,7 +104,7 @@ extension IngredientsViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     // Action that dismiss the keyboard when the user taps on the main view
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         ingredientsTextField.resignFirstResponder()

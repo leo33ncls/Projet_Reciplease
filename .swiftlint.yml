@@ -1,0 +1,7 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - Reciplease/AppDelegate.swift
+disabled_rules: # rule identifiers to exclude from running
+  - function_parameter_count
+  - identifier_name
