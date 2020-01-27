@@ -30,7 +30,7 @@ class RecipeDetailsViewController: UIViewController {
         super.viewDidLoad()
         recipeImageView.layer.addSublayer(CustomShadowLayer(view: recipeImageView,
                                                             shadowColor: UIColor.customGrey,
-                                                            shadowRadius: 50.0))
+                                                            shadowRadius: 60.0))
         directionButton.layer.cornerRadius = 5.0
 
         if let currentRecipe = recipe {
